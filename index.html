@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="ja">
+
+  <head>
+    <script type="text/x-mathjax-config">
+
+       MathJax.Hub.Config({TeX:{equationNumbers:{autoNumber:"AMS"}}});
+
+    </script>
+
+    <script type="text/javascript" async 
+
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+
+    </script>
+
+  </head>
+
+  <body>
+    <h3>１変数の離散型状態空間表現の導出</h3>
+
+    <p>
+      時間微分方程式\(\dot x + ax = u\)を下記のように記述します。
+    </p>
+    \begin{align}
+    \dot x = -ax + u \label{eq:SysEqn}
+    \end{align}
+
+    <p>式\eqref{eq:SysEqn}はすでに１変数の連続系状態空間表現となっています。
+    式\eqref{eq:SysEqn}に\(x=c(t)e^{-at}\)を代入すると次式が得られます。
+    </p>
+    \begin{align}
+    \dot c = ue^{at} \label{eq:SysEqn2}
+    \end{align}
+
+    <p>式\eqref{eq:SysEqn2}を積分すると次式になります。</p>
+    \begin{align}
+    c(t) = \int_0^t ue^{a\tau}d\tau + D \label{eq:SysEqn3}
+    \end{align}
+    <p>ここに、\(D\)は積分定数です。</p>
+
+    <p>\(c\)を\(x=ce^{-at}\)に代入すると\(x\)は次式となります。</p>
+    \begin{align}
+    x(t)=De^{-at} + \int_0^t ue^{a(\tau - t)}d\tau \label{eq:SysEqn4}
+    \end{align}
+
+    <p>\(t=0\)のときx=D=x(0)となるので、式\eqref{eq:SysEqn4}は次式となります。</p>
+    \begin{align}
+    x(t)=x(0)e^{-at} + \int_0^t ue^{a(\tau - t)}d\tau \label{eq:SysEqn5}
+    \end{align}
+
+    <p>\(t=T\)のときx=x(T)とすれば式\eqref{eq:SysEqn5}から次の漸化式が得られます。</p>
+    \begin{align}
+    x(T)=x(0)e^{-at} + \int_0^T ue^{a(\tau - T)}d\tau \label{eq:SysEqn6}
+    \end{align}
+
+    <p>式\eqref{eq:SysEqn6}の時間区間[0,T]では一定u(t)=u(0)とすると次式になります。</p>
+    \begin{align}
+    x(T)=x(0)e^{-at} + u(0)\int_0^T ue^{a(\tau - T)}d\tau \label{eq:SysEqn7}
+    \end{align}
+
+    <p>
+      式\eqref{eq:SysEqn7}は\(x(0)\)を初期値として\(T\)秒後の\(x(T)\)の計算式となっています。
+      したがって、初期値\(x(nT)\)に対する\(T\)秒後の\(x((n+1)T)\)は次式となります。
+    </p>
+    \begin{align}
+    x((n+1)T)=x(nT)e^{-at} + u(nT)\int_0^T ue^{a(\tau - T)}d\tau \label{eq:SysEqn8}
+    \end{align}
+
+    <p>
+      ここで、\(x(nT)\)を\(x(n)\)、\(u(nT)\)を\(u(n)\)と表記し、\(A=e^{-at}\)、\(B=\int_0^T ue^{a(\tau - T)}d\tau\)
+      とおくと、次の１変数の離散型状態空間表現が得られます。
+    </p>
+    \begin{align}
+    x(n+1)=Ax(n) + Bu(n) \label{eq:SysEqn9}
+    \end{align}
+
+   <p><a href="https://aoyamakohbo.github.io/AdaptIdent/">->適応同定</a></p>
+   <p><a href="https://aoyamakohbo.github.io/Craftlogy/">->TOP</a></p>
+</body>
+
+</html>
