@@ -31,52 +31,57 @@
     式\eqref{eq:SysEqn}に\(x=c(t)e^{-at}\)を代入すると次式が得られます。
     </p>
     \begin{align}
-    \dot c = ue^{at} \label{eq:SysEqn2}
+    \dot c(t) = u(t)e^{at} \label{eq:SysEqn2}
     \end{align}
 
     <p>式\eqref{eq:SysEqn2}を積分すると次式になります。</p>
     \begin{align}
-    c(t) = \int_0^t ue^{a\tau}d\tau + D \label{eq:SysEqn3}
+    c(t) = \int_0^t u(\tau)e^{a\tau}d\tau + D \label{eq:SysEqn3}
     \end{align}
     <p>ここに、\(D\)は積分定数です。</p>
 
     <p>\(c\)を\(x=ce^{-at}\)に代入すると\(x\)は次式となります。</p>
     \begin{align}
-    x(t)=De^{-at} + \int_0^t ue^{a(\tau - t)}d\tau \label{eq:SysEqn4}
+    x(t)=De^{-at} + \int_0^t u(\tau)e^{a(\tau - t)}d\tau \label{eq:SysEqn4}
     \end{align}
 
     <p>\(t=0\)のときx=D=x(0)となるので、式\eqref{eq:SysEqn4}は次式となります。</p>
     \begin{align}
-    x(t)=x(0)e^{-at} + \int_0^t ue^{a(\tau - t)}d\tau \label{eq:SysEqn5}
+    x(t)=e^{-at}x(0) + \int_0^t u(\tau)e^{a(\tau - t)}d\tau \label{eq:SysEqn5}
     \end{align}
 
-    <p>\(t=T\)のときx=x(T)とすれば式\eqref{eq:SysEqn5}から次の漸化式が得られます。</p>
+    <p>さて、ここから離散化にとりかかります。サンプリング周期を\(T\)として、\(t=nT\)のとき式\eqref{eq:SysEqn5}から次式が得られます。</p>
     \begin{align}
-    x(T)=x(0)e^{-at} + \int_0^T ue^{a(\tau - T)}d\tau \label{eq:SysEqn6}
+    x(nT)=e^{-anT}x(0) + \int_0^{nT} u(\tau)e^{a(\tau - nT)}d\tau \label{eq:SysEqn5_1}
     \end{align}
 
-    <p>式\eqref{eq:SysEqn6}の時間区間[0,T]では一定u(t)=u(0)とすると次式になります。</p>
+    <p>次に、\(t=(n+1)nT\)のとき式\eqref{eq:SysEqn5}から次式が得られます。</p>
     \begin{align}
-    x(T)=x(0)e^{-at} + u(0)\int_0^T ue^{a(\tau - T)}d\tau \label{eq:SysEqn7}
+    x((n+1)T)=e^{-a(n+1)T}x(0) + \int_0^{(n+1)T} u(\tau)e^{a(\tau - (n+1)T)}d\tau \label{eq:SysEqn6}
+    \end{align}
+
+    <p>式\eqref{eq:SysEqn5_1}の両辺に\(e^{-aT}\)を乗じて、式\eqref{eq:SysEqn6}の両辺から引くと次式が得られます。</p>
+    \begin{align}
+    x((n+1)T)-e^{-aT}x(nT) =& \int_0^{(n+1)T} u(\tau)e^{a(\tau - (n+1)T)}d\tau -  e^{-aT}\int_0^{nT} u(\tau)e^{a(\tau - nT)}d\tau \nonumber\\
+    =& \int_0^{(n+1)T} u(\tau)e^{a(\tau - (n+1)T)}d\tau - \int_0^{nT} u(\tau)e^{a(\tau - (n+1)T)}d\tau \nonumber\\
+    =& \int_{nT}^{(n+1)T} u(\tau)e^{a(\tau - (n+1)T)}d\tau \label{eq:SysEqn6_1}
     \end{align}
 
     <p>
-      式\eqref{eq:SysEqn7}は\(x(0)\)を初期値として\(T\)秒後の\(x(T)\)の計算式となっています。
-      したがって、初期値\(x(nT)\)に対する\(T\)秒後の\(x((n+1)T)\)は次式となります。
-    </p>
+      \(\tau\)の区間\([nT,(n+1)T]\)で\(u(\tau)=u(nT)\)(一定)とし、\(\tau^\prime=\tau-nT\)に変数変換すると、式\eqref{eq:SysEqn6_1}は次式になります。</p>
     \begin{align}
-    x((n+1)T)=x(nT)e^{-at} + u(nT)\int_0^T ue^{a(\tau - T)}d\tau \label{eq:SysEqn8}
+    x((n+1)T)=e^{-at}x(nT) + \{\int_0^T e^{a(\tau^\prime - T)}d\tau^\prime\}u(nT) \label{eq:SysEqn7}
     \end{align}
 
-    <p>
-      ここで、\(x(nT)\)を\(x(n)\)、\(u(nT)\)を\(u(n)\)と表記し、\(A=e^{-at}\)、\(B=\int_0^T ue^{a(\tau - T)}d\tau\)
-      とおくと、次の１変数の離散型状態空間表現が得られます。
-    </p>
+    <p>式\eqref{eq:SysEqn7}の\(x(nT)\)、\(u(nT)\)をそれぞれ\(x(n)\)、\(u(n)\)と表記して\(\tau^\prime\)を\(\tau\)に置き換え、</p>
+    \begin{align}
+    A=e^{-aT}、~~~B=\int_0^T ue^{a(\tau - T)}d\tau
+    \end{align}
+    <p>とおくと、１変数の離散型状態空間表現が得られます。</p>
     \begin{align}
     x(n+1)=Ax(n) + Bu(n) \label{eq:SysEqn9}
     \end{align}
 
-   <p><a href="https://aoyamakohbo.github.io/AdaptIdent/">->適応同定</a></p>
    <p><a href="https://aoyamakohbo.github.io/Craftlogy/">->TOP</a></p>
 </body>
 
