@@ -24,10 +24,16 @@
       時間微分方程式\(\dot x + ax = u\)を下記のように記述します。
     </p>
     \begin{align}
-    \dot x = -ax + u \label{eq:SysEqn}
+    \left\{
+    \begin{array}{@{\,}rl}
+    \dot x &= -ax + u\\
+    y &= ~x
+    \end{array}
+    \right.    
+    \label{eq:SysEqn}
     \end{align}
 
-    <p>式\eqref{eq:SysEqn}はすでに１変数の連続系状態空間表現となっています。
+    <p>式\eqref{eq:SysEqn}はすでに１変数の<a href="https://aoyamakohbo.github.io/AnalogStateEq/">連続型状態空間表現</a>となっています。
     式\eqref{eq:SysEqn}に\(x=c(t)e^{-at}\)を代入すると次式が得られます。
     </p>
     \begin{align}
