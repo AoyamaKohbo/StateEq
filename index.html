@@ -33,6 +33,11 @@
     \label{eq:SysEqn}
     \end{align}
 
+    <p>式\eqref{eq:SysEqn}をブロック線図で表現すると下図になります。
+      このブロック線図では負帰還(ネガティブフィードバック)が表現されています。
+    </p> 
+        <img src="BlockDiag.jpg" width=300px>
+
     <p>式\eqref{eq:SysEqn}はすでに１変数の<a href="https://aoyamakohbo.github.io/AnalogStateEq/">連続型状態空間表現</a>となっています。
     式\eqref{eq:SysEqn}に\(x=c(t)e^{-at}\)を代入すると次式が得られます。
     </p>
@@ -85,7 +90,12 @@
     \end{align}
     <p>とおくと、１変数の離散型状態空間表現が得られます。</p>
     \begin{align}
-    x(n+1)=Ax(n) + Bu(n) \label{eq:SysEqn9}
+    \left\{
+    \begin{array}{@{\,}rl}
+    x(n+1)&= ~Ax(n) + Bu(n)\\
+    y(n) &= ~x(n)
+    \end{array}
+    \right. \label{eq:DiscSys}
     \end{align}
 
    <p><a href="https://aoyamakohbo.github.io/Craftlogy/">->TOP</a></p>
