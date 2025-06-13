@@ -38,7 +38,7 @@
     <p>式\eqref{eq:SysEqn}をブロック線図で表現すると下図になります。
       このブロック線図では負帰還(ネガティブフィードバック)が表現されています。
     </p> 
-        <img src="BlockDiag.jpg" width=300px>
+        <img src="BlockDiag.jpg" width=600px>
 
   
     <p>式\eqref{eq:SysEqn}に\(x=c(t)e^{-at}\)を代入すると次式が得られます。</p>
@@ -87,17 +87,22 @@
 
     <p>式\eqref{eq:SysEqn7}の\(x(nT)\)、\(u(nT)\)をそれぞれ\(x(n)\)、\(u(n)\)と表記して\(\tau^\prime\)を\(\tau\)に置き換え、</p>
     \begin{align}
-    A=e^{-aT}、~~~B=b\int_0^T e^{a(\tau - T)}d\tau
+    p=e^{-aT}、~~~q=b\int_0^T e^{a(\tau - T)}d\tau
     \end{align}
     <p>とおくと、１変数の離散時間状態方程式が得られます。</p>
     \begin{align}
     \left.
     \begin{array}{@{\,}rl}
-    x(n+1)&= ~Ax(n) + Bu(n)\\
+    x(n+1)&= ~px(n) +qu(n)\\
     y(n) &= ~x(n)
     \end{array}
     \right\} \label{eq:DiscSys}
     \end{align}
+
+    <p>式\eqref{eq:SysEqn}をブロック線図で表現すると下図になります。
+      このブロック線図では負帰還(ネガティブフィードバック)が表現されています。
+    </p> 
+        <img src="BlockDiagDgt.jpg" width=600px>
 
    <p><a href="https://aoyamakohbo.github.io/Craftlogy/">->TOP</a></p>
 </body>
