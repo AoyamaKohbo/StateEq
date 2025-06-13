@@ -18,7 +18,7 @@
   </head>
 
   <body>
-    <h3>１変数の離散型状態空間表現の導出</h3>
+    <h3>１変数の離散時間状態方程式の導出</h3>
 
     <p>
       時間微分方程式\(\dot x + ax = bu\)を下記のように記述します。
@@ -33,7 +33,7 @@
     \label{eq:SysEqn}
     \end{align}
     <p>式\eqref{eq:SysEqn}はすでに１変数の
-      <a href="https://aoyamakohbo.github.io/AnalogStateEq/">連続型状態空間表現</a>
+      <a href="https://aoyamakohbo.github.io/AnalogStateEq/">連続時間状態方程式</a>
       になっています。</p>
     <p>式\eqref{eq:SysEqn}をブロック線図で表現すると下図になります。
       このブロック線図では負帰還(ネガティブフィードバック)が表現されています。
@@ -89,7 +89,7 @@
     \begin{align}
     A=e^{-aT}、~~~B=b\int_0^T e^{a(\tau - T)}d\tau
     \end{align}
-    <p>とおくと、１変数の離散型状態空間表現が得られます。</p>
+    <p>とおくと、１変数の離散時間状態方程式が得られます。</p>
     \begin{align}
     \left.
     \begin{array}{@{\,}rl}
